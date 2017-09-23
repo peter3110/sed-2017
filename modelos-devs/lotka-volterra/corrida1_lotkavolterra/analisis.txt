@@ -1,0 +1,4 @@
+
+Nota : en este link hay un analisis y unos graficos de como deberia dar esta corrida masomenos en un grafico
+
+	- http://jmahaffy.sdsu.edu/courses/f09/math636/lectures/lotka/qualde2.html#fitparameter
