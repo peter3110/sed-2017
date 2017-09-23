@@ -1,0 +1,109 @@
+<atomic name="susceptible">
+	<state-variables></state-variables>
+	<ports>
+		<input>
+			<port name="succumbing"/>
+		</input>
+		<output>
+			<port name="susceptible_integrator"/>
+		</output>
+	</ports>
+	<ta></ta>
+	<internal-transition-function>
+	</internal-transition-function>
+	<output-function></output-function>
+</atomic>
+
+<atomic name="susceptible_integrator">
+	<state-variables></state-variables>
+	<ports>
+		<input>
+			<port name="in_susceptible"/>
+		</input>
+		<output>
+			<port name="out_succumbing"/>
+		</output>
+	</ports>
+	<ta></ta>
+	<internal-transition-function>
+	</internal-transition-function>
+	<output-function></output-function>
+</atomic>
+
+<atomic name="total_population">
+	<state-variables></state-variables>
+	<ports>
+		<output>
+			<port name="out_succumbing"/>
+		</output>
+	</ports>
+	<ta></ta>
+	<internal-transition-function>
+	</internal-transition-function>
+	<output-function></output-function>
+</atomic>
+
+<atomic name="contact_infectivity">
+	<state-variables></state-variables>
+	<ports>
+		<output>
+			<port name="out_succumbing"/>
+		</output>
+	</ports>
+	<ta></ta>
+	<internal-transition-function>
+	</internal-transition-function>
+	<output-function></output-function>
+</atomic>
+
+<atomic name="succumbing">
+	<state-variables></state-variables>
+	<ports>
+		<input>
+			<port name="in_contact_infectivity"/>
+			<port name="in_total_population"/>
+			<port name="in_susceptible_integrator"/>
+			<port name="in_infectious_integrator"/>
+		</input>
+		<output>
+			<port name="out_susceptible"/>
+			<port name="out_infectious"/>
+		</output>
+	</ports>
+	<ta></ta>
+	<internal-transition-function>
+	</internal-transition-function>
+	<output-function></output-function>
+</atomic>
+
+<atomic name="infectious">
+	<state-variables></state-variables>
+	<ports>
+		<input>
+			<port name="succumbing"/>
+		</input>
+		<output>
+			<port name="infectious_integrator"/>
+		</output>
+	</ports>
+	<ta></ta>
+	<internal-transition-function>
+	</internal-transition-function>
+	<output-function></output-function>
+</atomic>
+
+<atomic name="infectious_integrator">
+	<state-variables></state-variables>
+	<ports>
+		<input>
+			<port name="infectious"/>
+		</input>
+		<output>
+			<port name="succumbing"/>
+		</output>
+	</ports>
+	<ta></ta>
+	<internal-transition-function>
+	</internal-transition-function>
+	<output-function></output-function>
+</atomic>

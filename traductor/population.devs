@@ -1,0 +1,100 @@
+<atomic name="susceptible">
+	<state-variables>
+		<state-variable name="self" type="people" initial_value="?"/>
+	</state-variables>
+	<ports>
+		<input></input>
+		<output>
+			<port name="out_flow_succumbing"/>
+			<port name="out_feedback_succumbing"/>
+		</output>
+	</ports>
+	<ta>?</ta>
+	<internal-transition-function>
+		<SetStateVar name="self - out_flow_succumbing"/>
+	</internal-transition-function>
+	<output-function>
+		<Send to="out_flow_succumbing" value="self"/> ?
+		<Send to="out_feedback_succumbing" value="self"/> ?
+	</output-function>
+</atomic>
+
+<atomic name="succumbing">
+	<state-variables>
+		<state-variable name="self" type="person/time" initial_value="?"/>
+	</state-variables>
+	<ports>
+		<input>
+			<port name="in_flow_susceptible"/>
+			<port name="in_feedback_suscpetible"/>
+			<port name="in_feedback_contact_infectivity"/>
+			<port name="in_feedback_total_population"/>
+		</input>
+		<output>
+			<port name="out_flow_infectious"/>
+		</output>
+	</ports>
+	<ta>?</ta>
+	<internal-transition-function>
+		?
+	</internal-transition-function>
+	<external-transition-function>	
+		<SetStateVar name="self" value="self + in_flow_suceptible"/> ? (1. external 2. internal)
+		<Code>
+			<SetStateVar name="self">
+				<Literal value="...? - lo que de la cuenta de abajo - "/>
+				<BinOp operator="*">
+					<Left>
+						<GetVar name="feedback_susceptible"/>
+					</Left>
+					<Right>
+						<BinOp operator="/">
+						 <Left>
+							 <GetVar name="flow_infectious"/>
+						 </Left>
+						 <Right>
+							 <BinOp operator="*">
+								 <Left>
+									 <GetVar name="feedback_total_population"/>
+								 </Left>
+								 <Right>
+									 <GetVar name="feedback_contact_infectivity"/>
+								 </Right>
+								</BinOp>
+						 </Right>
+					 </BinOp>
+					</Right>
+				</BinOp>
+			</SetStateVar>
+		</Code>
+	</external-transition-function>
+	<output-function>
+		<Send to="out_flow_infectiuous" value="self"/> ?
+	</output-function>
+</atomic>
+
+<atomic name="contact_infectivity">
+	<state-variables>
+		<state-variable name="self" type="float" initial_value="0.3"/>
+	</state-variables>
+</atomic>
+
+<atomic name="total_population">
+	<state-variables>
+		<state-variable name="self" type="people" initial_value="1000"/>
+	</state-variables>
+</atomic>
+
+<atomic name="infectious">
+	<state-variables>
+		<state-variable name="self" type="people" initial_value="5"/>
+	</state-variables>
+	<port>
+		<input>
+			<port name="in_flow_succumbing"/>
+		</input>
+	</port>
+	<external-transition-function>
+		<SetStateVar name="self" value="self + in_flow_succumbing"/> ?
+	</external-transition-function>
+</atomic>
