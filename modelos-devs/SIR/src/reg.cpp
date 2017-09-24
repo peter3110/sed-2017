@@ -2,24 +2,32 @@
 #include "register.h"
 
 #include "qss1.h"
-#include "FminusHares.h"
-#include "FplusHares.h"
-#include "FtotHares.h"
+#include "FminusSusc.h"
+#include "FplusSusc.h"
+#include "FtotSusc.h"
 
-#include "FtotLynx.h"
-#include "FplusLynx.h"
-#include "FminusLynx.h"
+#include "FtotInf.h"
+#include "FplusInf.h"
+#include "FminusInf.h"
+
+#include "FtotRecov.h"
+#include "FplusRecov.h"
+#include "FminusRecov.h"
 
 
 void register_atomics_on(ParallelModelAdmin &admin)
 {
 	admin.registerAtomic(NewAtomicFunction<QSS1>(), QSS_MODEL_NAME);
 
-	admin.registerAtomic(NewAtomicFunction<FminusHares>(), FMINUSHARES);
-	admin.registerAtomic(NewAtomicFunction<FplusHares>(), FPLUSHARES);
-	admin.registerAtomic(NewAtomicFunction<FtotHares>(), FTOTHARES);
+	admin.registerAtomic(NewAtomicFunction<FminusSusc>(), FMINUSSUSC);
+	admin.registerAtomic(NewAtomicFunction<FplusSusc>(), FPLUSSUSC);
+	admin.registerAtomic(NewAtomicFunction<FtotSusc>(), FTOTSUSC);
 
-	admin.registerAtomic(NewAtomicFunction<FminusLynx>(), FMINUSLYNX);
-	admin.registerAtomic(NewAtomicFunction<FplusLynx>(), FPLUSLYNX);
-	admin.registerAtomic(NewAtomicFunction<FtotLynx>(), FTOTLYNX);
+	admin.registerAtomic(NewAtomicFunction<FminusInf>(), FMINUSINF);
+	admin.registerAtomic(NewAtomicFunction<FplusInf>(), FPLUSINF);
+	admin.registerAtomic(NewAtomicFunction<FtotInf>(), FTOTINF);
+
+	admin.registerAtomic(NewAtomicFunction<FminusRecov>(), FMINUSRECOV);
+	admin.registerAtomic(NewAtomicFunction<FplusRecov>(), FPLUSRECOV);
+	admin.registerAtomic(NewAtomicFunction<FtotRecov>(), FTOTRECOV);
 }

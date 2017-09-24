@@ -1,5 +1,5 @@
-#ifndef _Ftot_H_
-#define _Ftot_H_
+#ifndef _FtotHares_H_
+#define _FtotHares_H_
 
 #include <random>
 
