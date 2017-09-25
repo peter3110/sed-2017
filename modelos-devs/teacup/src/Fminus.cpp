@@ -48,10 +48,6 @@ Model &Fminus::externalFunction(const ExternalMessage &msg)
 
 Model &Fminus::internalFunction(const InternalMessage &)
 {
-	double characteristic_time = 100;
-	double room_temperature = 70;
-	val = (var1-room_temperature)/characteristic_time;
-
 	passivate();
 	return *this ;
 }
@@ -59,6 +55,10 @@ Model &Fminus::internalFunction(const InternalMessage &)
 
 Model &Fminus::outputFunction(const CollectMessage &msg)
 {
+	double characteristic_time = 100;
+	double room_temperature = 70;
+	val = (var1 - room_temperature) / characteristic_time;
+
 	Tuple<Real> out_value { val };
 	sendOutput(msg.time(), out, out_value);
 
